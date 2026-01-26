@@ -1,0 +1,24 @@
+{
+  "name": "agendanow",
+  "version": "1.0.0",
+  "description": "AgendaNow es una plataforma web para la gestión de reservas de espacios y horarios, pensada para pequeños y medianos negocios que necesitan organizar su agenda de forma sencilla y fiable.",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/tedichavdarov-dev/AgendaNow.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/tedichavdarov-dev/AgendaNow/issues"
+  },
+  "homepage": "https://github.com/tedichavdarov-dev/AgendaNow#readme",
+  "dependencies": {
+    "@anthropic-ai/sdk": "^0.71.2",
+    "@modelcontextprotocol/sdk": "^1.25.3"
+  }
+}
