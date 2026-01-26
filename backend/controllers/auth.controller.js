@@ -24,8 +24,15 @@ module.exports.register = (req, res, next) => {
         res.status(400).json({
           message: "El email ya está registrado!"
         });
+      } else if (error.errors) {
+        const messages = Object.values(error.errors).map(err => err.message);
+        res.status(400).json({
+          message: messages.join(", ")
+        });
       } else {
-        res.status(400).json(error);
+        res.status(400).json({
+          message: error.message || "Error al registrar usuario"
+        });
       }
     });
 };

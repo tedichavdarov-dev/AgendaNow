@@ -203,7 +203,7 @@ module.exports.deleteReserva = (req, res, next) => {
     })
     .then((reserva) => {
       if (!reserva) return;
-      
+
       res.status(200).json({
         message: "Reserva eliminada correctamente!"
       });
@@ -211,6 +211,33 @@ module.exports.deleteReserva = (req, res, next) => {
     .catch((error) => {
       res.status(500).json({
         message: "Error al eliminar la reserva!",
+        error: error
+      });
+    });
+};
+
+module.exports.getHorariosOcupados = (req, res, next) => {
+  const { spaceId, date } = req.params;
+
+  const reservaDate = new Date(date);
+  reservaDate.setHours(0, 0, 0, 0);
+
+  ReservaModel.find({
+    space: spaceId,
+    date: reservaDate,
+    status: { $ne: "CANCELADA" }
+  })
+    .select("startHour endHour")
+    .then((reservas) => {
+      const horariosOcupados = reservas.map((reserva) => ({
+        startHour: reserva.startHour,
+        endHour: reserva.endHour
+      }));
+      res.status(200).json(horariosOcupados);
+    })
+    .catch((error) => {
+      res.status(500).json({
+        message: "Error al obtener horarios ocupados!",
         error: error
       });
     });

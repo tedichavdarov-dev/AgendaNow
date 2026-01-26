@@ -1,7 +1,7 @@
 const express = require("express");
 const router = express.Router();
-const espacioController = require("../controllers/espacio.controller");
-const { authenticate, isAdmin } = require("../middlewares/auth.middleware");
+const espacioController = require("../../controllers/espacio.controller");
+const { authenticate, isAdmin } = require("../../middlewares/auth.middleware");
 
 router.get("/espacios", espacioController.getEspacios);
 router.get("/espacios/:id", espacioController.getEspacioById);

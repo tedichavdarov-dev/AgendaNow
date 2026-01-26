@@ -19,3 +19,7 @@ export const updateReserva = (id, reservaData) => {
 export const deleteReserva = (id) => {
   return apiClient.delete(`/reservas/${id}`);
 };
+
+export const getHorariosOcupados = (spaceId, date) => {
+  return apiClient.get(`/espacios/${spaceId}/horarios-ocupados/${date}`);
+};
